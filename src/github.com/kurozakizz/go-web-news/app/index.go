@@ -2,7 +2,7 @@ package app
 
 import (
 	"net/http"
-	"view"
+	"github.com/kurozakizz/go-web-news/view"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
