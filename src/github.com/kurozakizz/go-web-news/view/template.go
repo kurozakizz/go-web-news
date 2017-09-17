@@ -11,8 +11,6 @@ import (
 	"path/filepath"
 )
 
-// continue https://youtu.be/yNQ7_xz_UDk?t=6353
-
 var (
 	tpIndex      = parseTemplate("layout.tmpl", "index.tmpl")
 	tpAdminLogin = parseTemplate("layout.tmpl", "admin/login.tmpl")
