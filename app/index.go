@@ -2,6 +2,7 @@ package app
 
 import (
 	"net/http"
+
 	"github.com/kurozakizz/go-web-news/view"
 )
 

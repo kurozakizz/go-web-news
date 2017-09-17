@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"github.com/kurozakizz/go-web-news/app"
+	"net/http"
 )
 
 const port = ":8080"
