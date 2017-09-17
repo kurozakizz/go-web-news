@@ -1,4 +1,4 @@
-# Simple News Web Application
+# Simple Go Web Application
 Golang web starter project
 
 ### Dependencies
