@@ -13,5 +13,5 @@ gofmt -w src
 
 ### How to run?
 ```sh
-$ go run cmd\go-web-news\main.go
+go run cmd\go-web-news\main.go
 ```
