@@ -9,6 +9,6 @@ const port = ":8080"
 
 func main() {
 	mux := http.NewServeMux()
-	app.Mount(mux)
+	app.CreateRouter(mux)
 	http.ListenAndServe(port, mux)
 }

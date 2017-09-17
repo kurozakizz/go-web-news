@@ -4,16 +4,16 @@ import (
 	"net/http"
 )
 
-// Mount handler mux
-func Mount(mux *http.ServeMux) {
-	mux.HandleFunc("/", index)
-	mux.HandleFunc("/news/", newsView)
+// BindRouting handler mux
+func CreateRouter(mux *http.ServeMux) {
+	mux.HandleFunc("/", indexHandler)
+	mux.HandleFunc("/news/", newsHandler)
 
 	adminMux := http.NewServeMux()
-	adminMux.HandleFunc("/login", adminLogin)
-	adminMux.HandleFunc("/list", adminList)
-	adminMux.HandleFunc("/create", adminCreate)
-	adminMux.HandleFunc("/edit", adminEdit)
+	adminMux.HandleFunc("/login", adminLoginHandler)
+	adminMux.HandleFunc("/list", adminListHandler)
+	adminMux.HandleFunc("/create", adminCreateHandler)
+	adminMux.HandleFunc("/edit", adminEditHandler)
 
 	mux.Handle("/admin/", http.StripPrefix("/admin", onlyAdmin(adminMux)))
 }

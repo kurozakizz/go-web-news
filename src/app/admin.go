@@ -1,22 +1,22 @@
 package app
 
 import (
-	"view"
 	"net/http"
+	"view"
 )
 
-func adminLogin(w http.ResponseWriter, r *http.Request) {
-	view.AdminLogin(w, nil)
+func adminLoginHandler(w http.ResponseWriter, r *http.Request) {
+	view.RenderAdminLoginPage(w, nil)
 }
 
-func adminList(w http.ResponseWriter, r *http.Request) {
-
-}
-
-func adminCreate(w http.ResponseWriter, r *http.Request) {
+func adminListHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func adminEdit(w http.ResponseWriter, r *http.Request) {
+func adminCreateHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func adminEditHandler(w http.ResponseWriter, r *http.Request) {
 
 }

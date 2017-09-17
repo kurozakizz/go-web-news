@@ -12,32 +12,32 @@ import (
 )
 
 var (
-	tpIndex      = parseTemplate("layout.tmpl", "index.tmpl")
-	tpAdminLogin = parseTemplate("layout.tmpl", "admin/login.tmpl")
+	indexTemplate      = convertFileToTemplate("layout.tmpl", "index.tmpl")
+	adminLoginTemplate = convertFileToTemplate("layout.tmpl", "admin/login.tmpl")
 )
 
-var m = minify.New()
+var templateMinifier = minify.New()
 
-const templateDir = "template"
+const defaultTemplateFolder = "template"
 
 func init() {
-	m.AddFunc("text/html", html.Minify)
-	m.AddFunc("text/css", css.Minify)
-	m.AddFunc("text/javascript", js.Minify)
+	templateMinifier.AddFunc("text/html", html.Minify)
+	templateMinifier.AddFunc("text/css", css.Minify)
+	templateMinifier.AddFunc("text/javascript", js.Minify)
 }
 
-func joinTemplateDir(files ...string) []string {
+func joinFolderName(files ...string) []string {
 	r := make([]string, len(files))
 	for i, f := range files {
-		r[i] = filepath.Join(templateDir, f)
+		r[i] = filepath.Join(defaultTemplateFolder, f)
 	}
 	return r
 }
 
-func parseTemplate(files ...string) *template.Template {
+func convertFileToTemplate(files ...string) *template.Template {
 	t := template.New("")
 	t.Funcs(template.FuncMap{})
-	_, err := t.ParseFiles(joinTemplateDir(files...)...)
+	_, err := t.ParseFiles(joinFolderName(files...)...)
 	if err != nil {
 		panic(err)
 	}
@@ -53,15 +53,15 @@ func render(t *template.Template, w http.ResponseWriter, data interface{}) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	m.Minify("text/html", w, &buffer)
+	templateMinifier.Minify("text/html", w, &buffer)
 }
 
-// Index render Index
-func Index(w http.ResponseWriter, data interface{}) {
-	render(tpIndex, w, data)
+// RenderIndexPage render index page
+func RenderIndexPage(w http.ResponseWriter, data interface{}) {
+	render(indexTemplate, w, data)
 }
 
-// AdminLogin render Admin Login
-func AdminLogin(w http.ResponseWriter, data interface{}) {
-	render(tpAdminLogin, w, data)
+// RenderAdminLoginPage render admin login page
+func RenderAdminLoginPage(w http.ResponseWriter, data interface{}) {
+	render(adminLoginTemplate, w, data)
 }

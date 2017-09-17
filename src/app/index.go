@@ -1,10 +1,10 @@
 package app
 
 import (
-	"view"
 	"net/http"
+	"view"
 )
 
-func index(w http.ResponseWriter, r *http.Request) {
-	view.Index(w, nil)
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	view.RenderIndexPage(w, nil)
 }
