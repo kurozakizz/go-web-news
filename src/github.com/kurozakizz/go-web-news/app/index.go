@@ -1,8 +1,8 @@
 package app
 
 import (
-	"net/http"
 	"github.com/kurozakizz/go-web-news/view"
+	"net/http"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
