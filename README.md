@@ -6,6 +6,11 @@ Golang web starter project
 go get -u github.com/tdewolff/minify/...
 ```
 
+### Format code in /src
+```sh
+gofmt -w src
+```
+
 ### How to run?
 ```sh
 $ go run cmd\go-web-news\main.go
